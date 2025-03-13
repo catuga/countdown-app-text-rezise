@@ -1,16 +1,17 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
+import { FitTextDirective } from '../../directives/fit-text-directive.directive';
 
 @Component({
   selector: 'app-countdown',
-  imports: [FormsModule],
+  imports: [FormsModule, FitTextDirective],
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent implements OnInit, OnDestroy {
   eventTitle: string = 'Midsummer Eve';
-  eventDate: string = '2025-06-21';
+  eventDate: string = new Date().toISOString().slice(0, 10);
   remainingTime: string = '';
   private subscription: Subscription | null = null;
 
