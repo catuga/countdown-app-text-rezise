@@ -19,7 +19,7 @@ A countdown application built using Angular that dynamically resizes text to fil
    ```bash
    npm install
    ```
-4. **Install dependencies:**
+4. **Run the development server:**
    ```bash
    ng serve
    ```
