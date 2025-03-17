@@ -71,6 +71,11 @@
     padding: 0 8px;
     font-size: 14px;
     background-color: #F5F3F3;
+    box-sizing: border-box;
+    color: #000000;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
     &[type="date"]::-webkit-calendar-picker-indicator {
       display: none;
       -webkit-appearance: none;

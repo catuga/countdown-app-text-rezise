@@ -6,6 +6,7 @@ import { Directive, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 export class FitTextDirective implements AfterViewInit, OnDestroy {
   private resizeObserver: ResizeObserver | null = null;
   private mutationObserver: MutationObserver | null = null;
+  private resizeListener = this.adjustFontSize.bind(this);
 
   constructor(private el: ElementRef) {}
 
@@ -20,6 +21,8 @@ export class FitTextDirective implements AfterViewInit, OnDestroy {
       subtree: true
     });
 
+    window.addEventListener('resize', this.resizeListener);
+
     this.adjustFontSize();
   }
 
@@ -32,6 +35,7 @@ export class FitTextDirective implements AfterViewInit, OnDestroy {
       this.mutationObserver.disconnect();
       this.mutationObserver = null;
     }
+    window.removeEventListener('resize', this.resizeListener);
   }
 
   private adjustFontSize(): void {
